@@ -1,2 +1,2 @@
 # covid.nubium.cz
-Grafana dasboard pro zobrazení COVID19 statistik
+Grafana dashboard pro zobrazení COVID19 statistik
