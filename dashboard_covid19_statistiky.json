@@ -1,0 +1,4105 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 2,
+  "iteration": 1636987142737,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 39,
+      "options": {
+        "content": "Nesnažíme se duplikovat existující snahy vizualizovat dostupná data o průběhu pandemie v ČR. Naší motivací je vytvořit rozhraní, které umožní větší interaktivitu vizualizací a tím v důsledku snazší interpretaci dat. Zároveň se snažíme o co největší transparentnost ohledně toho, jak se které grafy a křivky počítají, aby bylo možné grafy na základě Vaší zpětné vazby dále zlepšovat (s náměty piště na covid@nubim.cz).  \n\n    Umístěním kurzoru na \"i\" v levém horním rohu grafu zobrazíte informace o daném grafu.\n    Kliknutím na proměnnou v legendě grafu je zobrazena pouze jedna proměnná.\n    Zoom - Kliknutím a potažením po grafu lze vybrat část grafu ke zvětšení.\n    Přejetím myší po grafu se zobrazí legenda s konkrétními čísly v grafu.\n    Kliknutím na hodiny v pravém horním rohu okna lze změnit sledované období - rozšířit nebo zkrátit.\n    Kliknutím na \"interval\" v levém horním rohu okna lze vybrat sedmidenní průměr který vyhladí špičky vzniklé rozdíly v měření v jednotlivých dnech v týdnu (např. v neděli se testuje méně). Vhodné pro sledování trendů.\n\n[poslední rok](https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&from=now-1y&to=now) |\n[posledních 90dní](https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&from=now-90d&to=now) |\n[poslední měsíc](https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&from=now-30d&to=now) |\nVíce na www.blog.nubium.cz/covidova-grafana/",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.2.2",
+      "repeat": null,
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 46,
+      "panels": [],
+      "title": "kontrolni data",
+      "type": "row"
+    },
+    {
+      "datasource": "Infinity",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 10,
+          "valueSize": 10
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/zakladni-prehled.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "_",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "_",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "_",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "_",
+            "renamePattern": " "
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 25,
+      "panels": [],
+      "title": "základní přehled",
+      "type": "row"
+    },
+    {
+      "datasource": "MySQL",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 23,
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  potvrzene_pripady_celkem AS \"pripady celkem\",\n  aktivni_pripady AS \"aktivni pripady\",\n  umrti AS \"umrti\",\n  aktualne_hospitalizovani AS \"aktualne hospitalizovani\",\n  potvrzene_pripady_vcerejsi_den AS \"nakazy dnes\",\n  potvrzene_pripady_65_vcerejsi_den AS \"nakazy 65+\",\n  vykazana_ockovani_vcerejsi_den AS \"ockovani dnes\"\nFROM zakladni_prehled\nWHERE\n  datum = (select max(datum) from zakladni_prehled);\n  \n# select max(pocet_davek_kumulativne) as `ockovanych celkem` from ockovani_ukoncena;\n# select 10701777-max(pocet_davek_kumulativne) as `neockovanych celkem` from ockovani_ukoncena;\n# select round(incidence_pozitivni/pocet_PCR_testy*100,1) as `pozitivnich PCR testu %` from testy_pcr_antigenni WHERE datum = (select max(datum) from testy_pcr_antigenni);",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "potvrzene_pripady_celkem"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "potvrzene pripady celkem"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "aktivni_pripady"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "umrti"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "aktualne_hospitalizovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "aktualne hospitalizovani"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "potvrzene_pripady_vcerejsi_den"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "nakazy dnes"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "potvrzene_pripady_65_vcerejsi_den"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "nakazy 65+"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "vykazana_ockovani_vcerejsi_den"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "ockovani dnes"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "zakladni_prehled2",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "prehled mysql (melo by vychazet stejne jako json)",
+      "type": "table"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "color-text"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 33,
+      "options": {
+        "frameIndex": 0,
+        "showHeader": false
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  potvrzene_pripady_celkem AS \"pripady celkem\",\n  aktivni_pripady AS \"aktivni pripady\",\n  umrti AS \"umrti\",\n  aktualne_hospitalizovani AS \"aktualne hospitalizovani\",\n  potvrzene_pripady_vcerejsi_den AS \"nakazy dnes\",\n  potvrzene_pripady_65_vcerejsi_den AS \"nakazy 65+\",\n  vykazana_ockovani_vcerejsi_den AS \"ockovani dnes\"\nFROM zakladni_prehled\nWHERE\n  datum = (select max(datum) from zakladni_prehled);\n  \n# select max(pocet_davek_kumulativne) as `ockovanych celkem` from ockovani_ukoncena;\n# select 10701777-max(pocet_davek_kumulativne) as `neockovanych celkem` from ockovani_ukoncena;\n# select round(incidence_pozitivni/pocet_PCR_testy*100,1) as `pozitivnich PCR testu %` from testy_pcr_antigenni WHERE datum = (select max(datum) from testy_pcr_antigenni);",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "potvrzene_pripady_celkem"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "potvrzene pripady celkem"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "aktivni_pripady"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "umrti"
+                ],
+                "type": "column"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "aktualne_hospitalizovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "aktualne hospitalizovani"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "potvrzene_pripady_vcerejsi_den"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "nakazy dnes"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "potvrzene_pripady_65_vcerejsi_den"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "nakazy 65+"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "vykazana_ockovani_vcerejsi_den"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "ockovani dnes"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "zakladni_prehled2",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 14,
+      "panels": [],
+      "title": "grafy",
+      "type": "row"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "Denní přehled počtu osob s pozitivním nálezem COVID‑19 dle hlášení KHS a dle pozitivních nálezů laboratoří, které jsou určeny pro další šetření.\n\nS ohledem na fakt, že u publikovaných dat probíhá validace a průběžné doplňování hlášení, může u přehledů osob s laboratorně prokázaným onemocněním COVID‑19 dle hlášení KHS a laboratoří docházet zpětně k drobným změnám. Poslední aktualizace dat v tomto přehledu byla provedena k půlnoci předchozího dne.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "hideTimeOverride": true,
+      "id": 2,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(prirustkovy_pocet_nakazenych) AS \"přířůstkový počet nakažených\"\nFROM nakazeni_vyleceni_umrti_testy\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "prirustkovy_pocet_nakazenych"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "přířůstkový počet nakažených"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "nakazeni_vyleceni_umrti_testy",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(prirustkovy_pocet_nakazenych) AS \"prirustkovy_pocet_nakazenych\"\nFROM nakazeni_vyleceni_umrti_testy\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "prirustkovy_pocet_nakazenych"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "prirustkovy_pocet_nakazenych"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "nakazeni_vyleceni_umrti_testy",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": "1h",
+      "title": "Denní přehled počtu osob s nově prokázaným onemocněním COVID‑19",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "Denní počty očkovaných druhou dávkou nebo první u jednodávkové vakcíny (Janssen). Graf nezohledňuje třetí posilující dávky.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 28,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_davek) AS \"ukončená očkování\"\nFROM ockovani_ukoncena\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_davek"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "ukončená očkování"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "ockovani_ukoncena",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  sum(pocet_davek) AS \"pocet_davek\"\nFROM ockovani_demografie\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "pacient_prvni_zaznam"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "select \n  $__timeGroupAlias(datum,$__interval),\n  sum(pocet_davek) as posilujici_davka from ockovani_demografie \nwhere poradi_davky=3 AND $__timeFilter(datum)\ngroup by datum\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "pacient_prvni_zaznam"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Denní počty ukončených očkování",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "Dává přehled pouze o aktuálně vykázaných dávkách očkování, nikoliv o imunitě.\n\nPříklad interpretace grafu: V červnu 2021 byla vysoká vytíženost očkovacích míst.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 100000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 72,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 0,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "součet"
+            },
+            "properties": [
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "transparent",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "treti_davka"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "druhá dávka"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#d1c57d",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "součet"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#B877D9",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 30,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_davek) AS \"první dávka\"\nFROM ockovani_prvnidavka\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_davek"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "první dávka"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "ockovani_prvnidavka",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_davek) AS \"druhá dávka\"\nFROM ockovani_druhadavka\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_davek"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "druhá dávka"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "ockovani_druhadavka",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_davek) AS \"třetí dávka\"\nFROM ockovani_tretidavka\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_davek"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "třetí dávka"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "ockovani_tretidavka",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Denní počty očkovaných podle dávky",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "součet",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "druhá dávka",
+                "třetí dávka",
+                "první dávka"
+              ],
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "Odhad aktuálního počtu lidí v populaci s aktivní imunitou získanou očkováním.\n\nZahrnuje lidi kteří mají:\n- dvě dávky nebo jednu dávku u jednodávkových vakcín (Janssen) = ukončené základní očkování\n- a zároveň buď neuplynulo od očkování 6 měsíců nebo 6 měsíců uplynulo a již dostali posilující dávku\n\nOdhad nezohledňuje zpoždění 14 dní od očkování než je imunita plně aktivní.\n\nPříklad interpretace grafu: V grafu můžeme sledovat pokles počtu očkovaných s aktivní imunitou v říjnu 2021, která je daná uběhnutím 6 měsíců od ukončeného základního očkování u části očkovaných, kterým ale nebyla administrována posilující dávka.\n\nRozpad na konkrétní křivky, které byly použité pro výpočet tohoto výsledného grafu najdete níže nebo na přímém odkazu <a href=\"https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&viewPanel=43\">zde</a>.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "očkovaní s aktivní imunitou"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "očkovaní s aktivní imunitou"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 35,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(ockovanych_kumulativne-expirujici_davky_kumulativne+ockovanych_tretidavka_kumulativne) AS \"očkovaní s aktivní imunitou\"\n  FROM ockovani_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "ockovanych_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "plne ockovani"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ockovanych_tretidavka_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "plne ockovani s posilujici treti davkou"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "expirujici_davky_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "ockovani bez treti davky po 6mesicich"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ockovanych_kumulativne-expirujici_davky_kumulativne+ockovanych_tretidavka_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "očkovaní s aktivní imunitou"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "expirujici_davky_kumulativne-ockovanych_tretidavka_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "ockovani bez plne imunity"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "ockovani_expirace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(ockovanych_kumulativne) AS \"plne ockovani\",\n  avg(ockovanych_tretidavka_kumulativne) AS \"plne ockovani s posilujici treti davkou\",\n  avg(expirujici_davky_kumulativne) AS \"ockovani bez treti davky po 6mesicich\",\n  avg(ockovanych_kumulativne-expirujici_davky_kumulativne+ockovanych_tretidavka_kumulativne) AS \"očkovaní s aktivní imunitou\",\n  avg(expirujici_davky_kumulativne-ockovanych_tretidavka_kumulativne) AS \"ockovani bez plne imunity\"\nFROM ockovani_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "pacient_prvni_zaznam"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeShift": "3m",
+      "title": "Odhad aktuálního počtu lidí v populaci s aktivní imunitou získanou očkováním",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "Graf poskytuje vhled do výpočtu očkovaných s aktivní imunitou (viz graf výše).\n\n- Očkovaní s druhou dávkou = kumulativní počty lidí s ukončeným základním očkováním (dvě dávky nebo jedna dávka u jednodávkových vakcín)\n- Očkovaní s posilující dávkou = kumulativní počty lidí s ukončeným základním očkováním kterým uplynula 6 měsíční lhůta, po které šli na posilující dávku\n- Očkovaní druhou dávkou před více než 6 měsíci = kumulativní počty lidí s ukončeným základním očkováním kterým uplynula 6 měsíční lhůta (bez ohledu na to jestli byli na posilující dávce nebo ne)\n- Očkovaní s aktivní imunitou = \"Očkovaní s druhou dávkou\" - \"Očkovaní druhou dávkou před více než 6 měsíci\" + \"Očkovaní s posilující dávkou\"\n- Očkovaní kterým chybí posilující dávka = \"Očkovaní druhou dávkou před více než 6 měsíci\" - \"Očkovaní s posilující dávkou\"\n\nPříklad interpretace grafu: V grafu můžeme sledovat pokles počtu očkovaných s aktivní imunitou v říjnu 2021, která je daná uběhnutím 6 měsíců od ukončeného základního očkování u části očkovaných, kterým ale nebyla administrována posilující dávka.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 6200000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 43,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(ockovanych_kumulativne) AS \"očkovaní s druhou dávkou\",\n  avg(ockovanych_tretidavka_kumulativne) AS \"očkovaní s posilující dávkou\",\n  avg(expirujici_davky_kumulativne) AS \"očkovaní druhou dávkou před více než 6 měsíci\",\n  avg(ockovanych_kumulativne-expirujici_davky_kumulativne+ockovanych_tretidavka_kumulativne) AS \"očkovaní s aktivní imunitou\",\n  avg(expirujici_davky_kumulativne-ockovanych_tretidavka_kumulativne) AS \"očkovaní kterým chybí posilující dávka\"\nFROM ockovani_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "ockovanych_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "očkovaní s druhou dávkou"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ockovanych_tretidavka_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "očkovaní s posilující dávkou"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "expirujici_davky_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "očkovaní druhou dávkou před více než 6 měsíci"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ockovanych_kumulativne-expirujici_davky_kumulativne+ockovanych_tretidavka_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "očkovaní s aktivní imunitou"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "expirujici_davky_kumulativne-ockovanych_tretidavka_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "očkovaní kterým chybí posilující dávka"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "ockovani_expirace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Odhad aktuálního počtu lidí v populaci s aktivní imunitou získanou očkováním - rozpad",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "Graf s křivkami identickými z grafu <a href=\"https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&viewPanel=43\">Odhad aktuálního počtu lidí v populaci s aktivní imunitou získanou očkováním - rozpad</a> s tím rozdílem, že nepoužívá absolutní čísla, ale procento populace ČR. Populace ČR je definována 10701777 obyvatel dle <a href=\"https://www.czso.cz/csu/czso/pocet-obyvatel-v-obcich-k-112021\">odhadů ČSÚ k  1. 1. 2021</a>.\n\nOčkovaní = kumulativní počty lidí s ukončeným základním očkováním (dvě dávky nebo jedna dávka u jednodávkových vakcín), nebere v úvahu nutnost posilujících vakcín\nOčkovaní s aktivní imunitou = Odhad aktuálního počtu lidí v populaci s aktivní imunitou získanou očkováním, podrobnosti viz grafy výše \n\nAktuální číslo je užitečné hlavně při porovnávání jednotlivých zemí; od konkrétního čísla jakožto cíle pro získání kolektivní imunity se upustilo, protože kolektivní imunita nemusí být možná a tudíž se apeluje na co možná nejvyšší proočkovanost, viz např. <a href=\"https://www.meses.cz/stanovisko-k-ockovani-proti-nemoci-covid-19/\">zde</a>.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 60,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "očkovaní s aktivní imunitou"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 70
+      },
+      "id": 32,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_davek_kumulativne/$obyvatel*100) AS \"očkovaní\"\nFROM ockovani_ukoncena\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_davek_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "ockovani"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "$obyvatel-pocet_davek_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "neockovani"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "ockovani_ukoncena",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg((ockovanych_kumulativne-expirujici_davky_kumulativne+ockovanych_tretidavka_kumulativne)/$obyvatel*100) AS \"očkovaní s aktivní imunitou\"\nFROM ockovani_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "pacient_prvni_zaznam"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Poměr očkovaných v populaci v %",
+      "transformations": [
+        {
+          "disabled": true,
+          "id": "calculateField",
+          "options": {}
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí. Graf vychází z reportovaného počtu vyléčených případů a zohledňuje slábnutí imunity v čase. Slábnutí imunity po prodělání nemoci je dost individuální ale pro účely odhadu používáme konzervativních 6 měsíců. Reportovaní vyléčení jsou tedy přidáváni do počtu imunních a po 6 měsících jsou z tohoto součtu odebráni. Rozpad na konkrétní křivky, které byly použité pro výpočet tohoto výsledného grafu najdete níže nebo na přímém odkazu <a href=\"https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&viewPanel=44\">zde</a>.\n\nPodroběji viz:\nhttps://www.meses.cz/stanovisko-meses-k-vyvoji-epidemie-covid-19-v-podzimnich-mesicich-2021/\nhttps://www.ecdc.europa.eu/en/covid-19/latest-evidence/immune-responses\n\n\nPříklad interpretace grafu: V létě 2021 bylo v populaci poměrně silné zastoupení imunních z prodělání nemoci v rámci podzim 2020 - jaro 2021 vlny covidu. Tato imunita se nicméně vytrácí koncem října 2021.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aktivní imunita z prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aktivní imunita z prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "aktivní imunita z prodělání nemoci"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 80
+      },
+      "id": 37,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(vylecenych_kumulativne-expirujici_promoreni_kumulativne) AS \"aktivní imunita z prodělání nemoci\"\nFROM promoreni_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "vylecenych_kumulativne-expirujici_promoreni_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "aktivní imunita z prodělání nemoci"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "promoreni_expirace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": "3m",
+      "title": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí (6 měsíců)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí. Graf vychází z reportovaného počtu vyléčených případů a zohledňuje slábnutí imunity v čase. Slábnutí imunity po prodělání nemoci je dost individuální ale pro účely odhadu používáme konzervativních 6 měsíců. \n\n\nPodroběji viz:\nhttps://www.meses.cz/stanovisko-meses-k-vyvoji-epidemie-covid-19-v-podzimnich-mesicich-2021/\nhttps://www.ecdc.europa.eu/en/covid-19/latest-evidence/immune-responses\n\n- s prodělanou nemocí = kumulativní počet reportovaných vyléčených\n- 6 měsíců po prodělané nemoci = \"s prodělanou nemocí\" + 6 měsíců\n- aktivní imunita z prodělání nemoci = \"s prodělanou nemocí\" - \"6 měsíců po prodělané nemoci\"\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1700000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promoreni s imunitou"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "expirujici_promoreni_kumulativne"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aktivní imunita z prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "6 měsíců po prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 89
+      },
+      "id": 44,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(vylecenych_kumulativne) AS \"s prodělanou nemocí\",\n  avg(expirujici_promoreni_kumulativne) AS \"6 měsíců po prodělání nemoci\",\n  avg(vylecenych_kumulativne-expirujici_promoreni_kumulativne) AS \"aktivní imunita z prodělání nemoci\"\nFROM promoreni_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "vylecenych_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "s prodělanou nemocí"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "expirujici_promoreni_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "6 měsíců po prodělání nemoci"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "vylecenych_kumulativne-expirujici_promoreni_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "aktivní imunita z prodělání nemoci"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "promoreni_expirace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí (6 měsíců)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "aditivne podle https://www.seznamzpravy.cz/clanek/koronavirus-pocet-hospitalizovanych-120161 a  https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 10000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "celkem"
+            },
+            "properties": [
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "nas_total"
+            },
+            "properties": [
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 98
+      },
+      "hideTimeOverride": false,
+      "id": 16,
+      "interval": "$interval",
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "vzor",
+          "url": "https://www.seznamzpravy.cz/clanek/koronavirus-pocet-hospitalizovanych-120161"
+        }
+      ],
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(stav_bez_priznaku) AS \"bez příznaků\",\n  avg(stav_lehky) AS \"lehký\",\n  avg(stav_stredni) AS \"střední\",\n  avg(stav_tezky) AS \"těžký\"\nFROM hospitalizace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "stav_bez_priznaku"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "bez příznaků"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "stav_lehky"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "lehký"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "stav_stredni"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "střední"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "stav_tezky"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "těžký"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_hosp) AS \"celkem\"\nFROM hospitalizace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_hosp"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "celkem"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": " Přehled hospitalizací podle příznaků",
+      "transformations": [
+        {
+          "disabled": true,
+          "id": "calculateField",
+          "options": {
+            "alias": "nas_total",
+            "binary": {
+              "left": "",
+              "operator": "+",
+              "reducer": "sum",
+              "right": ""
+            },
+            "mode": "reduceRow",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "aditivne podle https://www.seznamzpravy.cz/clanek/koronavirus-pocet-hospitalizovanych-120161",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 10000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 100
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 109
+      },
+      "hideTimeOverride": false,
+      "id": 26,
+      "interval": "$interval",
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "vzor",
+          "url": "https://www.seznamzpravy.cz/clanek/koronavirus-pocet-hospitalizovanych-120161"
+        }
+      ],
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(jip) AS \"JIP\",\n  avg(kyslik) AS \"kyslík\",\n  avg(hfno) AS \"HFNO\",\n  avg(upv) AS \"UPV\",\n  avg(ecmo) AS \"ECMO\",\n  avg(tezky_upv_ecmo) AS \"těžký UPV a ECMO\"\nFROM hospitalizace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "jip"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "JIP"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "kyslik"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "kyslík"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "hfno"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "HFNO"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "upv"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "UPV"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ecmo"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "ECMO"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "tezky_upv_ecmo"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "těžký UPV a ECMO"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Přehled hospitalizací podle podpůrných přístrojů",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 200000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 117
+      },
+      "id": 18,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_PCR_testy) AS \"PCR testy\",\n  avg(pocet_AG_testy) AS \"AG testy\"\nFROM testy_pcr_antigenni\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_PCR_testy"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "PCR testy"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "pocet_AG_testy"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "AG testy"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "testy_pcr_antigenni",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeShift": null,
+      "title": "Přehled provedených testů",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "pozitivita"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 124
+      },
+      "id": 20,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pocet_PCR_testy) AS \"pocet_PCR_testy\",\n  avg(incidence_pozitivni) AS \"incidence_pozitivni\"\nFROM testy_pcr_antigenni\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "pocet_PCR_testy"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "pocet_PCR_testy"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "incidence_pozitivni"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "incidence_pozitivni"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "testy_pcr_antigenni",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeShift": null,
+      "title": "Pozitivita PCR testů",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "pozitivita",
+            "binary": {
+              "left": "incidence_pozitivni",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "pocet_PCR_testy"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 131
+      },
+      "id": 41,
+      "options": {
+        "content": "nasledujici nefunguje protoze ye potreba koukat na struturu\n\nviz odkaz na https://ockovani.opendatalab.cz/statistiky\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  datum AS \"time\",\n  pacient_prvni_zaznam\nFROM hospitalizace\nWHERE\n  $__timeFilter(datum)\nORDER BY datum",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "pacient_prvni_zaznam"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Očkování",
+      "type": "text"
+    },
+    {
+      "datasource": "MySQL",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 134
+      },
+      "id": 19,
+      "interval": "$interval",
+      "maxDataPoints": null,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(pozitivni_bez_ockovani) AS \"pozitivní  bez očkování\",\n  avg(pozitivni_dokoncene_ockovani) AS \"pozitivní s dokončeným očkováním\",\n  avg(pozitivni_posilujici_davka) AS \"pozitivní s posilující dávkou\"\nFROM ockovani_pozitivni\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "pozitivni_bez_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "pozitivní  bez očkování"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "pozitivni_dokoncene_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "pozitivní s dokončeným očkováním"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "pozitivni_posilujici_davka"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "pozitivní s posilující dávkou"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "ockovani_pozitivni",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Přehled osob s prokázanou nákazou s ohledem na vykázaná očkování",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "description": "\nzdroj: https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 142
+      },
+      "id": 9,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(hospitalizovani_bez_ockovani) AS \"hospitalizovaní bez očkování\",\n  avg(hospitalizovani_nedokoncene_ockovani) AS \"hospitalizovaní s nedokončeným očkováním\",\n  avg(hospitalizovani_dokoncene_ockovani) AS \"hospitalizovaní s dokončeným očkováním\",\n  avg(hospitalizovani_posilujici_davka) AS \"hospitalizovaní s posilující dávkou\"\nFROM ockovani_hospitalizace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "hospitalizovani_bez_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "hospitalizovaní bez očkování"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "hospitalizovani_nedokoncene_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "hospitalizovaní s nedokončeným očkováním"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "hospitalizovani_dokoncene_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "hospitalizovaní s dokončeným očkováním"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "hospitalizovani_posilujici_davka"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "hospitalizovaní s posilující dávkou"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "ockovani_hospitalizace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Přehled hospitalizací s ohledem na vykázaná očkování",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "MySQL",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 153
+      },
+      "id": 42,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "columns": "",
+            "comment": "",
+            "delimiter": ",",
+            "relax_column_count": false,
+            "skip_empty_lines": false,
+            "skip_lines_with_error": false
+          },
+          "data": "",
+          "filters": [],
+          "format": "time_series",
+          "global_query_id": "",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(umrti_bez_ockovani) AS \"neočkovaní\",\n  avg(umrti_dokoncene_ockovani) AS \"dokončené očkování\",\n  avg(umrti_nedokoncene_ockovani) AS \"nedokončené očkování\"\nFROM ockovani_umrti\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "root_selector": "",
+          "select": [
+            [
+              {
+                "params": [
+                  "umrti_bez_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "neočkovaní"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "umrti_dokoncene_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "dokončené očkování"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "umrti_nedokoncene_ockovani"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "nedokončené očkování"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "source": "url",
+          "table": "ockovani_umrti",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "type": "json",
+          "url": "https://jsonplaceholder.typicode.com/users",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Úmrtí",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 161
+      },
+      "id": 47,
+      "options": {
+        "content": "zdroj dat: UZIS a Statisticky urad. Data jsou  aktualizována každou hodinu, UZIS publikuje datové sady z předchozího dne mezi 6 a 8 hodinou ranní.\n\njakekoliv komentáře, nápady či připomínky pište na covid@nubium.cz\n\nNástroj Grafana používáme pro monitoring a grafovani parametrů provozovaných služeb v Nubium Development SE, chceš li více o naší praci, podívejte se na www.nubium.jobs.\n\n&copy; 2021 Nubium Development SE, licence [CC BY-SA](www.creativecommons.org/licenses/). Zdrojove kody grafů pod AGPL licenci na www.github.com/nubium/. Nástroj grafana lze získat zdarma na www.grafana.com.",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.2.2",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "selected": false,
+          "text": "1d",
+          "value": "1d"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1d,7d,14d,30d",
+        "queryValue": "",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      },
+      {
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "label": null,
+        "name": "obyvatel",
+        "query": "10701777",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "label": null,
+        "name": "obyvatel65",
+        "query": "2158322",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2y",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false,
+    "nowDelay": "",
+    "refresh_intervals": [
+      "1h",
+      "6h",
+      "1d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "COVID19 v CR - zakladni statistiky BETA",
+  "uid": "ygM9GvKnz",
+  "version": 150
+}

@@ -1,0 +1,508 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 4,
+  "iteration": 1636987101904,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "description": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí. Graf vychází z reportovaného počtu vyléčených případů a zohledňuje slábnutí imunity v čase. Slábnutí imunity po prodělání nemoci je dost individuální ale pro účely odhadu používáme konzervativních 6 měsíců. Reportovaní vyléčení jsou tedy přidáváni do počtu imunních a po 6 měsících jsou z tohoto součtu odebráni. Rozpad na konkrétní křivky, které byly použité pro výpočet tohoto výsledného grafu najdete níže nebo na přímém odkazu <a href=\"https://covid.nubium.cz/d/ygM9GvKnz/covid19-v-cr-zakladni-statistiky-beta?orgId=1&viewPanel=44\">zde</a>.\n\nPodroběji viz:\nhttps://www.meses.cz/stanovisko-meses-k-vyvoji-epidemie-covid-19-v-podzimnich-mesicich-2021/\nhttps://www.ecdc.europa.eu/en/covid-19/latest-evidence/immune-responses\n\n\nPříklad interpretace grafu: V létě 2021 bylo v populaci poměrně silné zastoupení imunních z prodělání nemoci v rámci podzim 2020 - jaro 2021 vlny covidu. Tato imunita se nicméně vytrácí koncem října 2021.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aktivní imunita z prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aktivní imunita z prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "aktivní imunita z prodělání nemoci"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(vylecenych_kumulativne-expirujici_promoreni_kumulativne) AS \"aktivní imunita z prodělání nemoci\"\nFROM promoreni_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "vylecenych_kumulativne-expirujici_promoreni_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "aktivní imunita z prodělání nemoci"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "promoreni_expirace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": "3m",
+      "title": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí (6 měsíců)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí. Graf vychází z reportovaného počtu vyléčených případů a zohledňuje slábnutí imunity v čase. Slábnutí imunity po prodělání nemoci je dost individuální ale pro účely odhadu používáme konzervativních 6 měsíců. \n\n\nPodroběji viz:\nhttps://www.meses.cz/stanovisko-meses-k-vyvoji-epidemie-covid-19-v-podzimnich-mesicich-2021/\nhttps://www.ecdc.europa.eu/en/covid-19/latest-evidence/immune-responses\n\n- s prodělanou nemocí = kumulativní počet reportovaných vyléčených\n- 6 měsíců po prodělané nemoci = \"s prodělanou nemocí\" + 6 měsíců\n- aktivní imunita z prodělání nemoci = \"s prodělanou nemocí\" - \"6 měsíců po prodělané nemoci\"\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1700000,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "promoreni s imunitou"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "expirujici_promoreni_kumulativne"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "aktivní imunita z prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "6 měsíců po prodělání nemoci"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 10,
+      "interval": "$interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(datum,$__interval),\n  avg(vylecenych_kumulativne) AS \"s prodělanou nemocí\",\n  avg(expirujici_promoreni_kumulativne) AS \"6 měsíců po prodělání nemoci\",\n  avg(vylecenych_kumulativne-expirujici_promoreni_kumulativne) AS \"aktivní imunita z prodělání nemoci\"\nFROM promoreni_expirace\nWHERE\n  $__timeFilter(datum)\nGROUP BY 1\nORDER BY $__timeGroup(datum,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "vylecenych_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "s prodělanou nemocí"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "expirujici_promoreni_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "6 měsíců po prodělání nemoci"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "vylecenych_kumulativne-expirujici_promoreni_kumulativne"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "aktivní imunita z prodělání nemoci"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "promoreni_expirace",
+          "timeColumn": "datum",
+          "timeColumnType": "datetime",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Odhad aktuálního počtu lidí v populaci s imunitou získanou proděláním nemocí (6 měsíců)",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "selected": false,
+          "text": "1d",
+          "value": "1d"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1d,7d,14d,30d",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now+3M"
+  },
+  "timepicker": {
+    "hidden": true,
+    "refresh_intervals": [
+      "1h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "COVID19 v CR - predikce",
+  "uid": "xhv6_x5nz",
+  "version": 10
+}
